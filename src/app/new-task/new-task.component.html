@@ -1,0 +1,64 @@
+<div class="background-list">
+    <div class="container">
+        <div class="alert alert-success" role="alert" *ngIf="created">
+            The task has been created
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="edited">
+            The task has been edited
+        </div>
+        <div class="header">
+            <div class="title">
+                <svg class=" bi-card-checklist" width="1.5rem" height="1.5rem" viewBox="0 0 16 16" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                    <path fill-rule="evenodd"
+                        d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                </svg>
+                <h4>{{ titulo }} </h4>
+            </div>
+            <div class="header-buttom">
+                <button class="btn btn-primary" routerLink="/">Back</button>
+            </div>
+        </div>
+        <form action="" class="formulario" [formGroup]="form">
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" formControlName="title" name="title" class="form-control">
+                <div *ngIf="!form.controls['title'].valid" class="alert alert-danger" role="alert">
+                    Insert a title
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" formControlName="description" name="description" class="form-control">
+                <div *ngIf="!form.controls['description'].valid" class="alert alert-danger" role="alert">
+                    Insert a description
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label for="entregar">Date</label>
+                <input type="date" formControlName="entregar" name="entregar" class="form-control">
+                <div *ngIf="!form.controls['entregar'].valid" class="alert alert-danger" role="alert">
+                    Insert a date
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <button *ngIf="esNuevo" [disabled]="!form.valid" class="btn btn-primary" (click)="save()">Save</button>
+                <button *ngIf="!esNuevo" [disabled]="!form.valid" class="btn btn-info" (click)="edit()">Edit</button>
+            </div>
+        </form>
+    </div>
+</div>
